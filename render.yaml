@@ -1,0 +1,18 @@
+services:
+  - type: web
+    name: form-backend
+    env: java
+    rootDir: backend/demo
+    buildCommand: ./mvnw clean package -DskipTests
+    startCommand: java -jar target/demo-0.0.1-SNAPSHOT.jar
+    healthCheckPath: /
+
+  - type: web
+    name: form-frontend
+    env: static
+    rootDir: frontend/frontend
+    buildCommand: npm ci && npm run build
+    staticPublishPath: dist
+    envVars:
+      - key: VITE_API_BASE_URL
+        value: https://form-backend.onrender.com

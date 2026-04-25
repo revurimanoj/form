@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.demo.model.User;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:5173")
+@CrossOrigin(originPatterns = { "http://localhost:5173", "https://*.onrender.com" })
 public class FormController {
 
     @GetMapping("/")

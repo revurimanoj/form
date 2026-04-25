@@ -1,6 +1,7 @@
 import { useState } from "react";
 
 function App() {
+  const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "http://localhost:8080";
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -14,7 +15,7 @@ function App() {
     };
 
     try {
-      const response = await fetch("http://localhost:8080/submit", {
+      const response = await fetch(`${API_BASE_URL}/submit`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
